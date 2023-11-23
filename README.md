@@ -8,6 +8,9 @@ Make sure you also view Adafruit for basic instructions on installing libraries 
 
 Thermal printing is great for setting up burner wallets - for tipping servers for example. This wallet will produce airgapped, truly random private bitcoin keys. Although ESP32s have a native function for generating true random numbers that has been evaluated by others as being truly random, I advise you to only use this for creating temporary use wallets. Bitcoin Core remains the gold standard in random key generation for bitcoin wallets.
 
+
+
+
 # Shopping List
 ![Shopping List](https://github.com/BTCtoolshed/TippingWallet/blob/main/Photos/shoppingList.png?raw=true)
 * A. Adafruit FeatherWing eINK 2.9"
@@ -21,6 +24,10 @@ Thermal printing is great for setting up burner wallets - for tipping servers fo
 * *Optional: 2 SD Cards (smallest size in MB possible) and Adafruit Feather Lipo Battery
 * You also need a computer with a USB port and with Arduino IDE installed
 
+
+
+
+
 # Hardware Assembly
 Assembling the ESP32 Feather and eInk FeatherWing is simple and straightforward.
 ![Assembly Step 1](https://github.com/BTCtoolshed/TippingWallet/blob/main/Photos/Assembly01.png?raw=true)
@@ -33,6 +40,10 @@ Seat the Feather into the FeatherWing. It is impossible to misplace the pins, bu
 
 Seat the battery plug if applicable.
 ![Assembly Step 4](https://github.com/BTCtoolshed/TippingWallet/blob/main/Photos/Assembly04.png?raw=true)
+
+
+
+
 
 
 **The printer is a little more complicated.**
@@ -52,6 +63,12 @@ Insert the DC Jack from the 1 Amp 9 Volt Power Supply into the Terminal Block. T
 Lastly, place the yellow ground jumper wire into the GND slot of the FeatherWing (should be 4th from the left in this view). Then place the blue jumper wire into the TX slot (2nd from right) and the green jumper wire into the RX slot (3rd from right).
 
 ![Printer Assembly Step 4](https://github.com/BTCtoolshed/TippingWallet/blob/main/Photos/Print04.png?raw=true)
+
+
+
+
+
+
 
 # Printing a Wallet
 A submenu sits behind a random quote generator.
