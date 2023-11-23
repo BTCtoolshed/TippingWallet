@@ -62,11 +62,16 @@ Pick the Middle button to print a wallet. The eInk display will give you clear s
 
 ![Print Step 3](https://github.com/BTCtoolshed/TippingWallet/blob/main/Photos/wPrint02.png?raw=true)
 
+If you wish to save all wallet information to an SD card, insert it now before clicking the top middle button.
+
 ![Print Step 4](https://github.com/BTCtoolshed/TippingWallet/blob/main/Photos/wPrint03.png?raw=true)
+
+If you did not insert an SD card, you will receive this error, but that is okay. Sometimes the wallet memory fails at this step and you have to restart the process. This is normal.
 
 ![Print Step 5](https://github.com/BTCtoolshed/TippingWallet/blob/main/Photos/wPrint04.png?raw=true)
 
 This is what the current burner wallet looks like printed. You can rewrite the text by editing the ino file if you wish.
+
 ![Print Step 13](https://github.com/BTCtoolshed/TippingWallet/blob/main/Photos/wPrint12.png?raw=true)
 
 After the ESP32 attempts to print (and it will always attempt to print even if the printer is not hooked up), you can access the Bitcoin wallet's Xpub, First receiving address and Private Phrase/Key
