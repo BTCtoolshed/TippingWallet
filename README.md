@@ -23,6 +23,14 @@ Thermal printing is great for setting up burner wallets - for tipping servers fo
 
 # Hardware Assembly
 Assembling the ESP32 Feather and eInk FeatherWing is simple and straightforward.
+![Assembly Step 1](https://github.com/BTCtoolshed/TippingWallet/blob/main/Photos/Assembly01.png?raw=true)
+
+![Assembly Step 2](https://github.com/BTCtoolshed/TippingWallet/blob/main/Photos/Assembly02.png?raw=true)
+
+![Assembly Step 3](https://github.com/BTCtoolshed/TippingWallet/blob/main/Photos/Assembly03.png?raw=true)
+
+Seat the battery plug if applicable.
+![Assembly Step 4](https://github.com/BTCtoolshed/TippingWallet/blob/main/Photos/Assembly04.png?raw=true)
 
 The printer is a little more complicated.
 
