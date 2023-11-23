@@ -9,7 +9,7 @@ Make sure you also view Adafruit for basic instructions on installing libraries 
 Thermal printing is great for setting up burner wallets - for tipping servers for example. This wallet will produce airgapped, truly random private bitcoin keys. Although ESP32s have a native function for generating true random numbers that has been evaluated by others as being truly random, I advise you to only use this for creating temporary use wallets. Bitcoin Core remains the gold standard in random key generation for bitcoin wallets.
 
 # Shopping List
-![Shopping List](https://github.com/BTCtoolshed/TippingWallet/blob/main/shoppingList.png?raw=true)
+![Shopping List](https://github.com/BTCtoolshed/TippingWallet/Photos/blob/main/shoppingList.png?raw=true)
 * A. Adafruit FeatherWing eINK 2.9"
 * B. Adafruit Feather ESP32 v2
 * C. USB-C Data Cable for flashing
