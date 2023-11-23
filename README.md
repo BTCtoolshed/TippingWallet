@@ -10,13 +10,13 @@ Make sure you also view Adafruit for basic instructions on installing libraries 
 Thermal printing is great for setting up burner wallets - for tipping servers for example.
 
 # Shopping List
-Adafruit FeatherWing eINK
-Adafruit Feather ESP32 v2 + USB-C Data Cable for flashing
-Adafruit Nano Thermal Printer
-1 Amp 9V Power Supply
-Terminal Block that fits Power Supply Jack (Female)
-Half breadboard
-Jumper wires
-Waterproof notepad (for keeping private keys safe)
-Optional: 2 SD Cards (smallest size in MB possible) and Adafruit Feather Lipo Battery
+* Adafruit FeatherWing eINK
+* Adafruit Feather ESP32 v2 + USB-C Data Cable for flashing
+* Adafruit Nano Thermal Printer
+* 1 Amp 9V Power Supply
+* Terminal Block that fits Power Supply Jack (Female)
+* Half breadboard
+* Jumper wires for microcontrollers/small electronics
+* Waterproof notepad (for keeping private keys safe)
+* Optional: 2 SD Cards (smallest size in MB possible) and Adafruit Feather Lipo Battery
 
