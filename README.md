@@ -2,7 +2,7 @@
 Create and print temporary Bitcoin wallets using a ESP32 microcontroller and Thermal Printer. 
 
 # READ this whole page and all instructions before proceeding!!!
-From me ........ Read the .ino file, especially the comments in the header. I do not have the time to support other boards or setups, unfortunately. If you are new to Arduino IDE, checkout https://randomnerdtutorials.com/ for ESP32 programming tutorials. You will need to know how to install new libraries and program an ESP32 for this project. Why am I not making this easier? You should have to read code in order to trust what you are doing when it comes to Hardware Wallets.
+Read the .ino file in the repository, especially the comments in the header. I do not have the time to support other boards or setups, unfortunately, other than the Adafruit. If you are new to Arduino IDE, checkout https://randomnerdtutorials.com/ for ESP32 programming tutorials. You will need to know how to install new libraries and program an ESP32 for this project. Why am I not making this easier? You should have to read code in order to trust what you are doing when it comes to Hardware Wallets.
 
 Make sure you also view Adafruit for basic instructions on installing libraries for the ThinkInk feather and/or Nano Thermal Printer. I do not follow Adafruit's power instructions on the thermal printer though, preferring a 1amp DC power source instead of a 2amp that would require a logic stepdown chip to prevent burning out the 3.3v ESP32 board. Instead you can use the 1amp power source but adjust certain settings in the libraries as noted in the .ino file and also plug the thermal printer in for 15 minutes or so to let it heat up before printing.
 
@@ -10,7 +10,7 @@ Thermal printing is great for setting up burner wallets - for tipping servers fo
 
 
 
-
+<br><br><br><br>
 # Shopping List
 ![Shopping List](https://github.com/BTCtoolshed/TippingWallet/blob/main/Photos/shoppingList.png?raw=true)
 * A. Adafruit FeatherWing eINK 2.9"
@@ -27,7 +27,7 @@ Thermal printing is great for setting up burner wallets - for tipping servers fo
 
 
 
-
+<br><br><br><br>
 # Hardware Assembly
 Assembling the ESP32 Feather and eInk FeatherWing is simple and straightforward.
 ![Assembly Step 1](https://github.com/BTCtoolshed/TippingWallet/blob/main/Photos/Assembly01.png?raw=true)
@@ -45,7 +45,7 @@ Seat the battery plug if applicable.
 
 
 
-
+<br><br><br><br>
 **The printer is a little more complicated.**
 
 Hook up your jumper wires in the printer's interface. I prefer to match the colors from the printer's interface for my own sanity.
@@ -69,7 +69,7 @@ Lastly, place the yellow ground jumper wire into the GND slot of the FeatherWing
 
 
 
-
+<br><br><br><br>
 # Printing a Wallet
 A submenu sits behind a random quote generator.
 To access the submenu, click all 3 top buttons on the eInk Feather Wing at the same time to enter the submenu.
@@ -118,7 +118,7 @@ This displays all the private key/phrase wallet information. You can write this 
 
 ![Print Step 12](https://github.com/BTCtoolshed/TippingWallet/blob/main/Photos/wPrint11.png?raw=true)
 
-
+<br><br><br><br>
 # Airgapped Transaction Signing
 A submenu sits behind a random quote generator.
 To access the submenu, click all 3 top buttons on the eInk Feather Wing at the same time to enter the submenu.
@@ -128,6 +128,7 @@ You will also need another SD card on which you have saved a Partially Signed Bi
 
 Follow the instructions on the eInk display for signing a transaction. After the transaction is signed, the full transaction will be listed in the file "THAT.psbt" . You can broadcast the transaction in Bitcoin Core or BlueWallet or any other wallet that can accept Bitcoin raw transactions.
 
+<br><br><br><br>
 # For Fun: Flashlight, Strobe Light and EMF Detector
 A submenu sits behind a random quote generator.
 To access the submenu, click all 3 top buttons on the eInk Feather Wing at the same time to enter the submenu.
