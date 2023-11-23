@@ -112,9 +112,9 @@ After pressing the upper right button, the Private Phrase (BIP39) QR Code is dis
 
 ![Print Step 10](https://github.com/BTCtoolshed/TippingWallet/blob/main/Photos/wPrint09.png?raw=true)
 
-This displays all the private key/phrase wallet information. You can write this down if you wish. Even if I am giving this as a tip, I prefer to keep the private keys for myself in case the person never uses it. I try to tell people they need to transfer the bitcoin within 24 hours or I will retake it.
-
 ![Print Step 11](https://github.com/BTCtoolshed/TippingWallet/blob/main/Photos/wPrint10.png?raw=true)
+
+This displays all the private key/phrase wallet information. You can write this down if you wish. Even if I am giving this as a tip, I prefer to keep the private keys for myself in case the person never uses it. I try to tell people they need to transfer the bitcoin within 24 hours or I will retake it.
 
 ![Print Step 12](https://github.com/BTCtoolshed/TippingWallet/blob/main/Photos/wPrint11.png?raw=true)
 
