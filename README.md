@@ -9,15 +9,15 @@ Make sure you also view Adafruit for basic instructions on installing libraries 
 Thermal printing is great for setting up burner wallets - for tipping servers for example. This wallet will produce airgapped, truly random private bitcoin keys. Although ESP32s have a native function for generating true random numbers that has been evaluated by others as being truly random, I advise you to only use this for creating temporary use wallets. Bitcoin Core remains the gold standard in random key generation for bitcoin wallets.
 
 # Shopping List
-* Adafruit FeatherWing eINK 2.9"
-* Adafruit Feather ESP32 v2 + USB-C Data Cable for flashing
-* Adafruit Nano Thermal Printer
-* 1 Amp 9V Power Supply
-* Terminal Block that fits Power Supply Jack (Female)
-* Half breadboard
-* Jumper wires for microcontrollers/small electronics
-* Waterproof notepad (for keeping private keys safe)
-* Optional: 2 SD Cards (smallest size in MB possible) and Adafruit Feather Lipo Battery
+* A. Adafruit FeatherWing eINK 2.9"
+* B. Adafruit Feather ESP32 v2
+* C. USB-C Data Cable for flashing
+* D. Adafruit Nano Thermal Printer
+* E. 1 Amp 9V Power Supply
+* F. Terminal Block that fits Power Supply Jack (Female)
+* G. Small breadboard
+* H. Jumper wires for microcontrollers/small electronics
+* *Optional: 2 SD Cards (smallest size in MB possible) and Adafruit Feather Lipo Battery
 
 # Hardware Assembly
 Assembling the ESP32 Feather and eInk FeatherWing is simple and straightforward.
