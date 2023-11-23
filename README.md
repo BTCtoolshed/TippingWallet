@@ -56,7 +56,33 @@ Lastly, place the yellow ground jumper wire into the GND slot of the FeatherWing
 # Printing a Wallet
 A submenu sits behind a random quote generator.
 To access the submenu, click all 3 top buttons on the eInk Feather Wing at the same time to enter the submenu.
+![Print Step 1](https://github.com/BTCtoolshed/TippingWallet/blob/main/Photos/wPrint01.png?raw=true)
+
 Pick the Middle button to print a wallet. The eInk display will give you clear step by step instructions. There is an option to save the Xpub and Private Key Phrase (BIP39) to separate SD cards after the printing has finished.
+
+![Print Step 2](https://github.com/BTCtoolshed/TippingWallet/blob/main/Photos/wPrintMenu.png?raw=true)
+
+![Print Step 3](https://github.com/BTCtoolshed/TippingWallet/blob/main/Photos/wPrint02.png?raw=true)
+
+![Print Step 4](https://github.com/BTCtoolshed/TippingWallet/blob/main/Photos/wPrint03.png?raw=true)
+
+![Print Step 5](https://github.com/BTCtoolshed/TippingWallet/blob/main/Photos/wPrint04.png?raw=true)
+
+![Print Step 6](https://github.com/BTCtoolshed/TippingWallet/blob/main/Photos/wPrint05.png?raw=true)
+
+![Print Step 7](https://github.com/BTCtoolshed/TippingWallet/blob/main/Photos/wPrint06.png?raw=true)
+
+![Print Step 8](https://github.com/BTCtoolshed/TippingWallet/blob/main/Photos/wPrint07.png?raw=true)
+
+![Print Step 9](https://github.com/BTCtoolshed/TippingWallet/blob/main/Photos/wPrint08.png?raw=true)
+
+![Print Step 10](https://github.com/BTCtoolshed/TippingWallet/blob/main/Photos/wPrint09.png?raw=true)
+
+![Print Step 11](https://github.com/BTCtoolshed/TippingWallet/blob/main/Photos/wPrint10.png?raw=true)
+
+![Print Step 12](https://github.com/BTCtoolshed/TippingWallet/blob/main/Photos/wPrint11.png?raw=true)
+
+![Print Step 13](https://github.com/BTCtoolshed/TippingWallet/blob/main/Photos/wPrint12.png?raw=true)
 
 # Airgapped Transaction Signing
 A submenu sits behind a random quote generator.
