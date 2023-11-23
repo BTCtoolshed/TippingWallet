@@ -1,7 +1,7 @@
 **# TippingWallet**
 Create and print temporary Bitcoin wallets using a ESP32 microcontroller and Thermal Printer. 
 
-# READ ALL INSTRUCTIONS BEFORE PROCEEDING
+# READ this whole page and all instructions before proceeding!!!
 From me ........ Read the .ino file, especially the comments in the header. I do not have the time to support other boards or setups, unfortunately. If you are new to Arduino IDE, checkout https://randomnerdtutorials.com/ for ESP32 programming tutorials. You will need to know how to install new libraries and program an ESP32 for this project. Why am I not making this easier? You should have to read code in order to trust what you are doing when it comes to Hardware Wallets.
 
 Make sure you also view Adafruit for basic instructions on installing libraries for the ThinkInk feather and/or Nano Thermal Printer. I do not follow Adafruit's power instructions on the thermal printer though, preferring a 1amp DC power source instead of a 2amp that would require a logic stepdown chip to prevent burning out the 3.3v ESP32 board. Instead you can use the 1amp power source but adjust certain settings in the libraries as noted in the .ino file and also plug the thermal printer in for 15 minutes or so to let it heat up before printing.
