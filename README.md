@@ -1,4 +1,4 @@
-**# TippingWallet**
+# TippingWallet
 Create and print temporary Bitcoin wallets using a ESP32 microcontroller and Thermal Printer. 
 
 # READ this whole page and all instructions before proceeding!!!
