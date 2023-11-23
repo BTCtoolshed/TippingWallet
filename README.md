@@ -9,7 +9,7 @@ Make sure you also view Adafruit for basic instructions on installing libraries 
 Thermal printing is great for setting up burner wallets - for tipping servers for example. This wallet will produce airgapped, truly random private bitcoin keys. Although ESP32s have a native function for generating true random numbers that has been evaluated by others as being truly random, I advise you to only use this for creating temporary use wallets. Bitcoin Core remains the gold standard in random key generation for bitcoin wallets.
 
 # Shopping List
-* Adafruit FeatherWing eINK
+* Adafruit FeatherWing eINK 2.9"
 * Adafruit Feather ESP32 v2 + USB-C Data Cable for flashing
 * Adafruit Nano Thermal Printer
 * 1 Amp 9V Power Supply
@@ -20,6 +20,29 @@ Thermal printing is great for setting up burner wallets - for tipping servers fo
 * Optional: 2 SD Cards (smallest size in MB possible) and Adafruit Feather Lipo Battery
 
 # Hardware Assembly
+Assembling the ESP32 Feather and eInk FeatherWing is simple and straightforward.
+
+The printer is a little more complicated.
+
 # Printing a Wallet
+A submenu sits behind a random quote generator.
+To access the submenu, click all 3 top buttons on the eInk Feather Wing at the same time to enter the submenu.
+Pick the Middle button to print a wallet. The eInk display will give you clear step by step instructions. There is an option to save the Xpub and Private Key Phrase (BIP39) to separate SD cards after the printing has finished.
+
 # Airgapped Transaction Signing
+A submenu sits behind a random quote generator.
+To access the submenu, click all 3 top buttons on the eInk Feather Wing at the same time to enter the submenu.
+Pick the Left button to begin signing a transaction. You will need an SD card with the Private Key Phrase to start the process. 
+
+You will also need another SD card on which you have saved a Partially Signed Bitcoin Transaction. You can do this with Bitcoin Core or with BlueWallet or other wallets. Save the PSBT as this name: "This.psbt" to the SD card. 
+
+Follow the instructions on the eInk display for signing a transaction. After the transaction is signed, the full transaction will be listed in the file "THAT.psbt" . You can broadcast the transaction in Bitcoin Core or BlueWallet or any other wallet that can accept Bitcoin raw transactions.
+
 # For Fun: Flashlight, Strobe Light and EMF Detector
+A submenu sits behind a random quote generator.
+To access the submenu, click all 3 top buttons on the eInk Feather Wing at the same time to enter the submenu.
+Pick the Right button to access the Flashlight functions.
+
+The flashlight stays lit for 3 minutes and then return to the main menu, unless you click the left button to reset that 3 minutes. To use the EMF detector, just hold the wallet close to possible EMF sources. If the light turns red it means there is a heavy EMF source. The EMF detector is just a fun tool, not a serious one.
+
+You can also click the middle button for a strobe.
