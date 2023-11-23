@@ -19,6 +19,7 @@ Thermal printing is great for setting up burner wallets - for tipping servers fo
 * G. Small breadboard
 * H. Jumper wires for microcontrollers/small electronics
 * *Optional: 2 SD Cards (smallest size in MB possible) and Adafruit Feather Lipo Battery
+* You also need a computer with a USB port and with Arduino IDE installed
 
 # Hardware Assembly
 Assembling the ESP32 Feather and eInk FeatherWing is simple and straightforward.
