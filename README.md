@@ -98,7 +98,7 @@ After pressing the upper left button, the 1st BTC receiving address is displayed
 
 ![Print Step 6](https://github.com/BTCtoolshed/TippingWallet/blob/main/Photos/wPrint05.png?raw=true)
 
-After pressing the upper middle button, the XPUB QR Code is displayed. You can use this to load a watch only wallet. For example, you can scan this easily into the BlueWallet app for a watch-only wallet. To escape to the next screen, hold the upper middle button.
+On the Wallet menu, after pressing the upper middle button, the XPUB QR Code is displayed. You can use this to load a watch only wallet. For example, you can scan this easily into the BlueWallet app for a watch-only wallet. To escape to the next screen, hold the upper middle button.
 
 ![Print Step 7](https://github.com/BTCtoolshed/TippingWallet/blob/main/Photos/wPrint06.png?raw=true)
 
@@ -108,7 +108,7 @@ This displays all the XPUB watch only wallet information. You can write this dow
 
 ![Print Step 9](https://github.com/BTCtoolshed/TippingWallet/blob/main/Photos/wPrint08.png?raw=true)
 
-After pressing the upper right button, the Private Phrase (BIP39) QR Code is displayed. You can use this to load a hot wallet. For example, you can scan this easily into the BlueWallet app through the import function. To escape to the next screen, hold the upper right button.
+On the Wallet menu, after pressing the upper right button, the Private Phrase (BIP39) QR Code is displayed. You can use this to load a hot wallet. For example, you can scan this easily into the BlueWallet app through the import function. To escape to the next screen, hold the upper right button.
 
 ![Print Step 10](https://github.com/BTCtoolshed/TippingWallet/blob/main/Photos/wPrint09.png?raw=true)
 
