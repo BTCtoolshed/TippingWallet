@@ -35,7 +35,7 @@ Assembling the ESP32 Feather and eInk FeatherWing is simple and straightforward.
 If you have a battery, place it in the middle of the FeatherWing thus.
 ![Assembly Step 2](https://github.com/BTCtoolshed/TippingWallet/blob/main/Photos/Assembly02.png?raw=true)
 
-Seat the Feather into the FeatherWing. It is impossible to misplace the pins, but be gentle.
+Seat the Feather into the FeatherWing. Be gentle pushing the pins in, and make sure you are lining them up properly or when power is applied you will destroy the board.
 ![Assembly Step 3](https://github.com/BTCtoolshed/TippingWallet/blob/main/Photos/Assembly03.png?raw=true)
 
 Seat the battery plug if applicable.
