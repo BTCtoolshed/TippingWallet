@@ -102,18 +102,17 @@ After pressing the upper middle button, the XPUB QR Code is displayed. You can u
 
 ![Print Step 7](https://github.com/BTCtoolshed/TippingWallet/blob/main/Photos/wPrint06.png?raw=true)
 
-This displays all the XPUB watch only wallet information. You can write this down if you wish.
-
 ![Print Step 8](https://github.com/BTCtoolshed/TippingWallet/blob/main/Photos/wPrint07.png?raw=true)
 
-After pressing the upper right button, the Private Phrase (BIP39) QR Code is displayed. You can use this to load a hot wallet. For example, you can scan this easily into the BlueWallet app through the import function. To escape to the next screen, hold the upper right button.
+This displays all the XPUB watch only wallet information. You can write this down if you wish.
 
 ![Print Step 9](https://github.com/BTCtoolshed/TippingWallet/blob/main/Photos/wPrint08.png?raw=true)
 
-This displays all the private key/phrase wallet information. You can write this down if you wish. Even if I am giving this as a tip, I prefer to keep the private keys for myself in case the person never uses it. I try to tell people they need to transfer the bitcoin within 24 hours or I will retake it.
+After pressing the upper right button, the Private Phrase (BIP39) QR Code is displayed. You can use this to load a hot wallet. For example, you can scan this easily into the BlueWallet app through the import function. To escape to the next screen, hold the upper right button.
 
 ![Print Step 10](https://github.com/BTCtoolshed/TippingWallet/blob/main/Photos/wPrint09.png?raw=true)
 
+This displays all the private key/phrase wallet information. You can write this down if you wish. Even if I am giving this as a tip, I prefer to keep the private keys for myself in case the person never uses it. I try to tell people they need to transfer the bitcoin within 24 hours or I will retake it.
 
 ![Print Step 11](https://github.com/BTCtoolshed/TippingWallet/blob/main/Photos/wPrint10.png?raw=true)
 
