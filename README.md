@@ -17,4 +17,6 @@ Adafruit Nano Thermal Printer
 Terminal Block that fits Power Supply Jack (Female)
 Half breadboard
 Jumper wires
+Waterproof notepad (for keeping private keys safe)
+Optional: 2 SD Cards (smallest size in MB possible) and Adafruit Feather Lipo Battery
 
