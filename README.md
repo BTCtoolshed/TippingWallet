@@ -10,6 +10,7 @@ Thermal printing is great for setting up burner wallets - for tipping servers fo
 
 In full transparency, this is where the private keys are generated:
 ![Randomization](https://github.com/BTCtoolshed/TippingWallet/blob/main/Photos/Random.png?raw=true)
+![Randomization](https://github.com/BTCtoolshed/TippingWallet/blob/main/Photos/Random2.png?raw=true)
 
 
 
