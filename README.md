@@ -60,13 +60,19 @@ To access the submenu, click all 3 top buttons on the eInk Feather Wing at the s
 
 Pick the Middle button to print a wallet. The eInk display will give you clear step by step instructions. There is an option to save the Xpub and Private Key Phrase (BIP39) to separate SD cards after the printing has finished.
 
-![Print Step 2](https://github.com/BTCtoolshed/TippingWallet/blob/main/Photos/wPrintMenu.png?raw=true)
-
 ![Print Step 3](https://github.com/BTCtoolshed/TippingWallet/blob/main/Photos/wPrint02.png?raw=true)
 
 ![Print Step 4](https://github.com/BTCtoolshed/TippingWallet/blob/main/Photos/wPrint03.png?raw=true)
 
 ![Print Step 5](https://github.com/BTCtoolshed/TippingWallet/blob/main/Photos/wPrint04.png?raw=true)
+
+This is what the current burner wallet looks like printed. You can rewrite the text by editing the ino file if you wish.
+![Print Step 13](https://github.com/BTCtoolshed/TippingWallet/blob/main/Photos/wPrint12.png?raw=true)
+
+After the ESP32 attempts to print (and it will always attempt to print even if the printer is not hooked up), you can access the Bitcoin wallet's Xpub, First receiving address and Private Phrase/Key
+![Print Step 2](https://github.com/BTCtoolshed/TippingWallet/blob/main/Photos/wPrintMenu.png?raw=true)
+
+
 
 ![Print Step 6](https://github.com/BTCtoolshed/TippingWallet/blob/main/Photos/wPrint05.png?raw=true)
 
@@ -82,7 +88,6 @@ Pick the Middle button to print a wallet. The eInk display will give you clear s
 
 ![Print Step 12](https://github.com/BTCtoolshed/TippingWallet/blob/main/Photos/wPrint11.png?raw=true)
 
-![Print Step 13](https://github.com/BTCtoolshed/TippingWallet/blob/main/Photos/wPrint12.png?raw=true)
 
 # Airgapped Transaction Signing
 A submenu sits behind a random quote generator.
