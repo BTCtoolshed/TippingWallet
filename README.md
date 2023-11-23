@@ -38,7 +38,7 @@ If you have a battery, place it in the middle of the FeatherWing thus.
 Seat the Feather into the FeatherWing. Be gentle pushing the pins in, and make sure you are lining them up properly or when power is applied you will destroy the board.
 ![Assembly Step 3](https://github.com/BTCtoolshed/TippingWallet/blob/main/Photos/Assembly03.png?raw=true)
 
-Seat the battery plug if applicable.
+Seat the battery plug if applicable. You can power the device/charge the battery with the usb-C data cable.
 ![Assembly Step 4](https://github.com/BTCtoolshed/TippingWallet/blob/main/Photos/Assembly04.png?raw=true)
 
 
