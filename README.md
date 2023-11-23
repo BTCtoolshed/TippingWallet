@@ -91,7 +91,7 @@ This is what the current burner wallet looks like printed. You can rewrite the t
 
 ![Print Step 13](https://github.com/BTCtoolshed/TippingWallet/blob/main/Photos/wPrint12.png?raw=true)
 
-After the ESP32 attempts to print (and it will always attempt to print even if the printer is not hooked up), you can access the Bitcoin wallet's Xpub, First receiving address and Private Phrase/Key
+After the ESP32 attempts to print (and it will always attempt to print even if the printer is not hooked up), you can access the Bitcoin wallet's Xpub, First receiving address and Private Phrase/Key. If you want you can insert an SD card before choosing option 2 or 3. Option 2 will just save the XPUB info to the SD card. Option 3 will save the all wallet information to the SD card.
 ![Print Step 2](https://github.com/BTCtoolshed/TippingWallet/blob/main/Photos/wPrintMenu.png?raw=true)
 
 After pressing the upper left button, the 1st BTC receiving address is displayed. You can use this is to verify if an XPUB was entered correctly. You can hold the upper left button to escape back to the Wallet menu.
