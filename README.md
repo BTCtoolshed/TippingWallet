@@ -36,16 +36,21 @@ Seat the battery plug if applicable.
 
 
 **The printer is a little more complicated.**
+
 Hook up your jumper wires in the printer's interface. I prefer to match the colors from the printer's interface for my own sanity.
+
 ![Printer Assembly Step 1](https://github.com/BTCtoolshed/TippingWallet/blob/main/Photos/Print01.png?raw=true)
 
 Insert the red and black jumper wires into the breadboard like below. Then take your Terminal Block and screw in red and black jumper wires. Place these into the breadboard in the same manner as below. Finally insert a yellow jumper wire into the black wires' row; these represents the Ground that the Printer and the ESP32 must share.
+
 ![Printer Assembly Step 2](https://github.com/BTCtoolshed/TippingWallet/blob/main/Photos/Print02.png?raw=true)
 
 Insert the DC Jack from the 1 Amp 9 Volt Power Supply into the Terminal Block. The final setup of the printer should look like this.
+
 ![Printer Assembly Step 3](https://github.com/BTCtoolshed/TippingWallet/blob/main/Photos/Print03.png?raw=true)
 
 Lastly, place the yellow ground jumper wire into the GND slot of the FeatherWing (should be 4th from the left in this view). Then place the blue jumper wire into the TX slot (2nd from right) and the green jumper wire into the RX slot (3rd from right).
+
 ![Printer Assembly Step 4](https://github.com/BTCtoolshed/TippingWallet/blob/main/Photos/Print04.png?raw=true)
 
 # Printing a Wallet
