@@ -19,15 +19,15 @@ Create and print temporary Bitcoin wallets using a ESP32 microcontroller and The
 
 <br><br><br>
 **1st installation option : Flashing Binary to the ESP32**
-1) You will need to install Python on your computer if it isn't already installed.<br>
-2) Then you will need to install esptool (see here https://docs.espressif.com/projects/esptool/en/latest/esp32/installation.html)<br>
-3) Download the BIN file from the repository above.<br>
-4) Plug in your USB cable to your esp32 device and connect to your computer's USB.<br>
-5) Identify the comms port (Windows example COM9) or device path (Linux/Mac example /dev/ttyUSB0) of your esp32. Google this if you don't know how.<br>
-6) Open CMD (command prompt). Navigate to the folder in which you installed esptool.py <br>
-7) Type: python esptool.py -p YOURCOMPORTorDEVICEPATH -b 460800 --before default_reset --after hard_reset --chip esp32  write_flash --flash_mode dio --flash_size detect --flash_freq 40m 0x10000 FULLPATHTOWHEREYOUDOWNLOADEDtheBINFILE <br>
-8) Hit enter. <br>
-9) Device should flash in under a minute and be ready for use. <br><br>
+1) Download the TippingWallet.bin file from this github repository.<br>
+2) You will need to install Python on your computer if it isn't already installed.<br>
+3) Then you will need to install esptool (see here https://docs.espressif.com/projects/esptool/en/latest/esp32/installation.html)<br>
+5) Plug in your USB cable to your esp32 device and connect to your computer's USB.<br>
+6) Identify the comms port (Windows example COM9) or device path (Linux/Mac example /dev/ttyUSB0) of your esp32. Google this if you don't know how.<br>
+7) Open CMD (command prompt). Navigate to the folder in which you installed esptool.py <br>
+8) Type: python esptool.py -p YOURCOMPORTorDEVICEPATH -b 460800 --before default_reset --after hard_reset --chip esp32  write_flash --flash_mode dio --flash_size detect --flash_freq 40m 0x10000 FULLPATHTOWHEREYOUDOWNLOADEDtheBINFILE <br>
+9) Hit enter. <br>
+10) Device should flash in under a minute and be ready for use. <br><br>
 
 Example of an esp32 device connected via COM port 9: python esptool.py -p COM9 -b 460800 --before default_reset --after hard_reset --chip esp32  write_flash --flash_mode dio --flash_size detect --flash_freq 40m 0x10000 C:\Users\YourUser\Desktop\TippingWallet.bin
 
