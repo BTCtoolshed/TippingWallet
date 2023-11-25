@@ -3,33 +3,7 @@ Create and print temporary Bitcoin wallets using a ESP32 microcontroller and The
 
 # READ this whole page and all instructions before proceeding!!!
 
-**1st installation option : Flashing Binary to the ESP32**
-1) You will need to install Python on your computer if it isn't already installed.
-2) Then you will need to install esptool (see here https://docs.espressif.com/projects/esptool/en/latest/esp32/installation.html)
-3) Download the BIN file from the repository above
-4) Plug in your USB cable to your esp32 device and connect to your computer's USB
-5) Identify the comms port (Windows example COM9) or device path (Linux/Mac example /dev/ttyUSB0) of your esp32. Google this if you don't know how.
-6) Open CMD (command prompt). Navigate to the folder in which you installed esptool.py
-7) Type: python esptool.py -p YOURCOMPORTorDEVICEPATH -b 460800 --before default_reset --after hard_reset --chip esp32  write_flash --flash_mode dio --flash_size detect --flash_freq 40m 0x10000 FULLPATHTOWHEREYOUDOWNLOADEDtheBINFILE
-8) Hit enter
-9) Device should flash in under a minute and be ready for use
-
-Example of an esp32 device connected via COM port 9: python esptool.py -p COM9 -b 460800 --before default_reset --after hard_reset --chip esp32  write_flash --flash_mode dio --flash_size detect --flash_freq 40m 0x10000 C:\Users\YourUser\Desktop\TippingWallet.bin
-
-**2nd installation option : Arduino IDE**
-Read the .ino file in the repository, especially the comments in the header. I do not have the time to support other boards or setups, unfortunately, other than the Adafruit. If you are new to Arduino IDE, checkout https://randomnerdtutorials.com/ for ESP32 programming tutorials. You will need to know how to install new libraries and program an ESP32 for this project. Why am I not making this easier? You should have to read code in order to trust what you are doing when it comes to Hardware Wallets.
-
-Make sure you also view Adafruit for basic instructions on installing libraries for the ThinkInk feather and/or Nano Thermal Printer. I do not follow Adafruit's power instructions on the thermal printer though, preferring a 1amp DC power source instead of a 2amp that would require a logic stepdown chip to prevent burning out the 3.3v ESP32 board. Instead you can use the 1amp power source but adjust certain settings in the libraries as noted in the .ino file and also plug the thermal printer in for 15 minutes or so to let it heat up before printing.
-
-Thermal printing is great for setting up burner wallets - for tipping servers for example. This wallet will produce airgapped, truly random private bitcoin keys. Although ESP32s have a native function for generating true random numbers that has been evaluated by others as being truly random, I advise you to only use this for creating temporary use wallets. Bitcoin Core remains the gold standard in random key generation for bitcoin wallets.
-
-In full transparency, this is where the private keys are generated. esp_random is a native function in ESP32:
-![Randomization](https://github.com/BTCtoolshed/TippingWallet/blob/main/Photos/Random.png?raw=true)
-![Randomization](https://github.com/BTCtoolshed/TippingWallet/blob/main/Photos/Random2.png?raw=true)
-
-
-
-<br><br><br><br>
+<br><br>
 # Shopping List
 ![Shopping List](https://github.com/BTCtoolshed/TippingWallet/blob/main/Photos/shoppingList.png?raw=true)
 * A. Adafruit FeatherWing eINK 2.9"
@@ -43,6 +17,31 @@ In full transparency, this is where the private keys are generated. esp_random i
 * *Optional: 2 SD Cards (smallest size in MB possible) and Adafruit Feather Lipo Battery
 * You also need a computer with a USB port and with Arduino IDE installed
 
+<br><br><br>
+**1st installation option : Flashing Binary to the ESP32**
+1) You will need to install Python on your computer if it isn't already installed.<br>
+2) Then you will need to install esptool (see here https://docs.espressif.com/projects/esptool/en/latest/esp32/installation.html)<br>
+3) Download the BIN file from the repository above.<br>
+4) Plug in your USB cable to your esp32 device and connect to your computer's USB.<br>
+5) Identify the comms port (Windows example COM9) or device path (Linux/Mac example /dev/ttyUSB0) of your esp32. Google this if you don't know how.<br>
+6) Open CMD (command prompt). Navigate to the folder in which you installed esptool.py <br>
+7) Type: python esptool.py -p YOURCOMPORTorDEVICEPATH -b 460800 --before default_reset --after hard_reset --chip esp32  write_flash --flash_mode dio --flash_size detect --flash_freq 40m 0x10000 FULLPATHTOWHEREYOUDOWNLOADEDtheBINFILE <br>
+8) Hit enter. <br>
+9) Device should flash in under a minute and be ready for use. <br><br>
+
+Example of an esp32 device connected via COM port 9: python esptool.py -p COM9 -b 460800 --before default_reset --after hard_reset --chip esp32  write_flash --flash_mode dio --flash_size detect --flash_freq 40m 0x10000 C:\Users\YourUser\Desktop\TippingWallet.bin
+
+<br><br><br>
+**2nd installation option : Arduino IDE**
+Read the .ino file in the repository, especially the comments in the header. I do not have the time to support other boards or setups, unfortunately, other than the Adafruit ESP32 v2 Feather and eInk FeatherWing 2.9". If you are new to Arduino IDE, checkout https://randomnerdtutorials.com/ for ESP32 programming tutorials. You will need to know how to install new libraries and program an ESP32 for this project. Why am I not making this easier? You should have to read code in order to trust what you are doing when it comes to Hardware Wallets.
+
+Make sure you also view Adafruit for basic instructions on installing libraries for the ThinkInk feather and/or Nano Thermal Printer. I do not follow Adafruit's power instructions on the thermal printer though, preferring a 1amp DC power source instead of a 2amp that would require a logic stepdown chip to prevent burning out the 3.3v ESP32 board. Instead you can use the 1amp power source but adjust certain settings in the libraries as noted in the .ino file and also plug the thermal printer in for 15 minutes or so to let it heat up before printing.
+
+Thermal printing is great for setting up burner wallets - for tipping servers for example. This wallet will produce airgapped, truly random private bitcoin keys. Although ESP32s have a native function for generating true random numbers that has been evaluated by others as being truly random, I advise you to only use this for creating temporary use wallets. Bitcoin Core remains the gold standard in random key generation for bitcoin wallets.
+
+In full transparency, this is where the private keys are generated. esp_random is a native function in ESP32:
+![Randomization](https://github.com/BTCtoolshed/TippingWallet/blob/main/Photos/Random.png?raw=true)
+![Randomization](https://github.com/BTCtoolshed/TippingWallet/blob/main/Photos/Random2.png?raw=true)
 
 
 
