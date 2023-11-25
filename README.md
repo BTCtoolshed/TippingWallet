@@ -8,7 +8,7 @@ Create and print temporary Bitcoin wallets using a ESP32 microcontroller and The
 ![Shopping List](https://github.com/BTCtoolshed/TippingWallet/blob/main/Photos/shoppingList.png?raw=true)
 * A. Adafruit FeatherWing eINK 2.9"
 * B. Adafruit Feather ESP32 v2
-* C. USB-C Data Cable for flashing
+* C. USB-C Data Cable for flashing (Not a regular charging cable! This is specifically a data cable.)
 * D. Adafruit Nano Thermal Printer
 * E. 1 Amp 9V Power Supply
 * F. Terminal Block that fits Power Supply Jack (Female)
@@ -22,7 +22,7 @@ Create and print temporary Bitcoin wallets using a ESP32 microcontroller and The
 1) Download the TippingWallet.bin file from this github repository.<br>
 2) You will need to install Python on your computer if it isn't already installed.<br>
 3) Then you will need to install esptool (see here https://docs.espressif.com/projects/esptool/en/latest/esp32/installation.html)<br>
-5) Plug in your USB cable to your esp32 device and connect to your computer's USB.<br>
+5) Plug in your USB data cable to your esp32 device and connect to your computer's USB.<br>
 6) Identify the comms port (Windows example COM9) or device path (Linux/Mac example /dev/ttyUSB0) of your esp32. Google this if you don't know how.<br>
 7) Open CMD (command prompt). Navigate to the folder in which you installed esptool.py <br>
 8) Type: python esptool.py -p YOURCOMPORTorDEVICEPATH -b 460800 --before default_reset --after hard_reset --chip esp32  write_flash --flash_mode dio --flash_size detect --flash_freq 40m 0x10000 FULLPATHTOWHEREYOUDOWNLOADEDtheBINFILE <br>
