@@ -9,7 +9,7 @@ Create and print temporary Bitcoin wallets using a ESP32 microcontroller and The
 * A. Adafruit FeatherWing eINK 2.9"
 * B. Adafruit Feather ESP32 v2
 * C. USB-C Data Cable for flashing (Not a regular charging cable! This is specifically a data cable.)
-* D. Adafruit Nano Thermal Printer
+* D. Adafruit Nano Thermal Printer (Newest version supports QR 204 Thermal Printers over serial, scroll to bottom of this page for instructions for QR204)
 * E. 1 Amp 9V Power Supply
 * F. Terminal Block that fits Power Supply Jack (Female)
 * G. Small breadboard
@@ -148,6 +148,13 @@ A submenu sits behind a random quote generator.
 To access the submenu, click all 3 top buttons on the eInk Feather Wing at the same time to enter the submenu.
 Pick the Right button to access the Flashlight functions.
 
+<br><br><br><br>
+# QR204 Thermal Printer
+Since Adafruit no longer sells thermal printers, I added support for the QR204 thermal printer - available on Amazon and other retailers.
+
+The setup is very similar, but you the QR204 uses two separate jumper connections. One is for power and the other for serial connection. The connector with a 2-wire female jack is for power: red is for vin (positive/power) and black is for ground. The other connector is a 5-wire jack. You will need to connect the ground to the same ground as the 2-wire connector and also the ESP32's ground connection. The RX and TX on the 5-wire jack connect to the RX and TX of the ESP32. In the photo example of the thermal printer connection in the sections above, you would just need to add an extra jumper wire for the ground in the same row as the yellow jumper wire and connect that to the "extra" ground connection for the QR204. The Adafruit printer only has 1 ground connection; the QR204 has 2 ground connections.
+
+If the printer does not print from the ESP32 on its first test, you may have the TX and RX reversed. It won't harm the controller if you have them switched, it just won't work until you switch them to the correct slots.
 The flashlight stays lit for 3 minutes and then return to the main menu, unless you click the left button to reset that 3 minutes. To use the EMF detector, just hold the wallet close to possible EMF sources. If the light turns red it means there is a heavy EMF source. The EMF detector is just a fun tool, not a serious one.
 
 You can also click the middle button for a strobe.
