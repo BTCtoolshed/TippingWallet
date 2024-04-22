@@ -1755,7 +1755,7 @@ void generate()
   Serial.println("Generate");
   display.clearBuffer();
   display.setTextSize(1);
-  testdrawtext("\n\n\n-Top Left Button for Multisig Options\n\n\n-Top Middle Button to Continue SingleSig\n\n\n-Top Right Button to Continue AND Print\n\n\n-Press Reset to Exit.",COLOR1);
+  testdrawtext("\n\n\n-Top Middle Button to Continue SingleSig\n\n\n-Top Right Button to Continue AND Print\n\n\n-Press Reset to Exit.",COLOR1);
   display.display();
   delay(500);
   while (countdown >= (0))
