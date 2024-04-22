@@ -1,8 +1,13 @@
+//To do : multisig wallet creation
+
+//NEW: print/no print options
+
 // esp32 only
 // Many thanks to Limor Fried/LadyAda, ricmoo, but especially to Stepan Snigirev and my anonymous friend for their information and help
 
 // Obviously you need to install libraries like ricmoo's qrcode, uBitcoin, SdFat (not the forks), and various Adafruit libraries for this to work
 // Read the comment next to the #include qrcoderm.h library. It is very important.
+// Printer Driver has been updated. Import zip file to Arduino library from here https://github.com/AndersV209/Pos-Printer-Library
 
 // To use the EMF Detector function:
 // You may need to buy a special resistor (pick a value between 1 megOhm - 3.3 megOhms) to connect ground and A2 (GPIO Pin 34)
@@ -12,15 +17,21 @@
 #define uS_TO_S_FACTOR 1000000  /* Conversion factor for micro seconds to seconds */
 #define TIME_TO_SLEEP  5        /* Time ESP32 will go to sleep (in seconds) */
 
-#include <Adafruit_NeoPixel.h> 
+#include <Adafruit_NeoPixel.h> //MIT License, attribute to Limor Fried
 Adafruit_NeoPixel pixels(1, PIN_NEOPIXEL);
 int led = LED_BUILTIN;
 
 #include <bootloader_random.h> //necessary for true random number generator - brings in entropy from WIFI, but shuts off after random numbers are generated
-#include <Bitcoin.h>
-#include <PSBT.h>
+
+#include <Bitcoin.h> //MIT License, attribute to Stepan Snigerev
+
+#include <PSBT.h> //MIT License, attribute to Stepan Snigerev
+
 #include <qrcoderm.h> //CRITICAL see instructions for renaming files here or QR code will not work https://github.com/ricmoo/QRCode/issues/35#issuecomment-1179311130
+//qrcode MIT license, attribute to Richard Moore and Project Nayuki
+
 #include <SPI.h>
+
 #include <SdFat.h>
 SdFat SD;
 File myFile;
@@ -39,7 +50,8 @@ String transaction = "";
 //float THREE;
 //float FOUR;
 
-#include "Adafruit_ThinkInk.h"
+#include "Adafruit_ThinkInk.h" //MIT License, attribute to Limor Fried
+
 #define SD_CS       14   // Reference https://forums.adafruit.com/viewtopic.php?f=22&t=171897
 #define EPD_DC      33 // 
 #define EPD_CS      15  // 
@@ -57,8 +69,13 @@ ThinkInk_290_Grayscale4_T5 display(EPD_DC, EPD_RESET, EPD_CS, SRAM_CS, EPD_BUSY)
 #define COLOR1 EPD_BLACK
 #define COLOR2 EPD_LIGHT
 
-#include "Adafruit_Thermal.h" //CRITICAL edit this file to increase the heat of the printer. My settings: setHeatConfig(uint8_t dots=11, uint8_t time=200, uint8_t interval=240)
-Adafruit_Thermal printer(&Serial1);
+//#include "Adafruit_Thermal.h" //CRITICAL edit this file to increase the heat of the printer. My settings: setHeatConfig(uint8_t dots=4, uint8_t time=255, uint8_t interval=255)
+////Print Library MIT License, attribute to Limor Fried
+//Adafruit_Thermal printer(&Serial1);
+
+#include "Pos_Printer.h"
+Pos_Printer printer(&Serial1); //edit the cpp and h file where necessary to set heat settings : dots=4, time = 255, interval = 255
+
 
 //////////////////////////////////////////////////////////
 int sample = 1000;
@@ -315,6 +332,13 @@ countdown = 1100;
 
 }
 
+//void generate_multisig()
+//{
+//  display.clearBuffer();
+//  display.setTextSize(2);
+//  testdrawtext("COMING SOON!", COLOR1);
+//  display.display();
+//}
 
 void generate_wallet()
 {
@@ -347,8 +371,480 @@ phra = String("Private Recovery Phrase:\n\n")+phrase;
 PRIVATE = phrase.c_str();
 PHR = phra.c_str();
 
+HDPrivateKey root(phrase, ""); // using default empty password, fill quotes if you want a password added
+
+ROOOT = root;
+finger = root.fingerprint();
+fing = finger.c_str();
+HDPrivateKey account = root.derive("m/84'/0'/0'");
+//Serial.println(root);
+//Serial.println(root.fingerprint());
+//Serial.println(account);
+//Serial.println(account.xpub());
+
+
+
+HDPublicKey xpub = account.xpub();
+pubx = account.xpub();
+//Serial.println(pubx);
+BWxpub = "["+finger+"/84h/0h/0h"+"]"+pubx;
+//Serial.println(BWxpub);
+XXPUB = BWxpub.c_str();
+
+      String desc = ""; //watch wallet for Bitcoin Core
+      desc = "wpkh([";
+      // add fingerprint
+      desc += root.fingerprint();
+      // add derivation path. We need to remove leading `m`
+      desc += "/84h/0h/0h]";
+      // now pub xpub in normal form
+      xpub.type = UNKNOWN_TYPE;
+      desc += xpub.toString();
+      desc += "/0/*)";
+      // and add a checksum
+      desc += String("#")+descriptorChecksum(desc);
+      //Serial.println(desc);
+
+      String desc2 = "";
+      desc2 = "wpkh([";
+      // add fingerprint
+      desc2 += root.fingerprint();
+      // add derivation path. We need to remove leading `m`
+      desc2 += "/84h/0h/0h]";
+      // now pub xpub in normal form
+      xpub.type = UNKNOWN_TYPE;
+      desc2 += xpub.toString();
+      desc2 += "/1/*)";
+      // and add a checksum
+      desc2 += String("#")+descriptorChecksum(desc2);
+      //Serial.println(desc2);
+
+HDPublicKey pub1;
+HDPublicKey pub2;
+HDPublicKey pub3;
+HDPublicKey pub4;
+
+pub1 = xpub.child(0).child(1); //this will show as Address 2
+//Serial.println(pub1.address());
+
+pub2 = xpub.child(0).child(2); //this will show as Address 3
+//Serial.println(pub2.address());
+
+pub3 = xpub.child(0).child(3); //this will show as Address 4
+//Serial.println(pub3.address());
+
+pub4 = xpub.child(0).child(0); //this will show as Address 1
+//Serial.println(pub4.address());
+
+pu1 = String("Public Address 2:\n\n")+String(pub1.address());
+pu2 = String("Public Address 3:\n\n")+String(pub2.address());
+pu3 = String("Public Address 4:\n\n")+String(pub3.address());
+pu4 = String("Public Address 1:\n\n")+String(pub4.address());
+
+P1 = pu1.c_str();
+P2 = pu2.c_str();
+P3 = pu3.c_str();
+P4 = pu4.c_str();
+
+PB1 = pub1.address();
+PBL1 = PB1.c_str();
+
+PB2 = pub2.address();
+PBL2 = PB2.c_str();
+
+PB3 = pub3.address();
+PBL3 = PB3.c_str();
+
+PB4 = pub4.address();
+PBL4 = PB4.c_str();
+
+
+
+////////////eInk text print//////////////////
+
+
+QRCode qrcode;
+uint8_t qrVersion = 10;
+uint8_t qrErrorLevel = ECC_MEDIUM;
+byte qrcodeBytes[qrcode_getBufferSize(qrVersion)];
+qrcode_initText(&qrcode, qrcodeBytes, qrVersion, qrErrorLevel, XXPUB);
+uint8_t scale=3;
+int buffer_size = calc_buffer_size(&qrcode, scale);
+int width = ((qrcode.version * 5 + 7) * scale);
+uint8_t pixels[buffer_size];
+
+  
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  
+
+  display.clearBuffer();
+  display.setTextSize(1);
+  testdrawtext("IN CHRIST ALONE WE TRUST\n\nBITCOIN WALLET GENERATOR v4.0\n\n\n1) Press Top Left Button for Address 1\n\n2) Press Top Middle Button for XPUB\n   & Optional SD Card Backup\n\n3) Press Top Right Button for Recovery Phrase\n   & Optional SD Card Backup", COLOR1);
+  display.display();
+  delay(1000);
+countdown = 750;
+///////////////////////////////////////////////////////////////////// innermost menu
+while (countdown >= 0 )
+{ delay(100);
+
+
+//////////////////////////////////////////////////////restate Address
+  if ( digitalRead(BUTTONA) == LOW )
+  {
+  Serial.println("ButtonA");
+  delay(100);
+  display.clearBuffer();
+  display.setTextSize(2);
+  testdrawtext(P4, COLOR1);
+  display.display();
+  ///////////////////
+  countdown = 250;
+   while (countdown >= (0)) 
+   {delay(250);
+   //try to connect for a period of time
+   if (digitalRead(BUTTONA) != LOW) 
+  {
+    delay(250);
+    String countprint = String(countdown);
+//    Serial.println(countprint);
+    --countdown;}
+      else {Serial.println("ButtonA"); break;}
+   }
+    Serial.println("Exit Address A");
+    countdown = 750;
+  ///////////////////
+  display.clearBuffer();
+  display.setTextSize(1);
+  testdrawtext("IN CHRIST ALONE WE TRUST\n\nBITCOIN WALLET GENERATOR v4.0\n\n\nPress button near SD slot to reset.\n\n1) Press Top Left Button for Address 1 \n\n2) Press Top Middle Button for XPUB\n   & Optional SD Card Backup\n\n3) Press Top Right Button for Recovery Phrase \n   & Optional SD Card Backup", COLOR1);
+  display.display();}
+ 
+
+//////////////////////////////////////////////////////restate XPUB
+  if ( digitalRead(BUTTONB) == LOW )
+  {
+
+//////////////////////////////////////////
+if(!SD.begin(SD_CS, SD_SCK_MHZ(16)))
+{Serial.println("SD did not initialize.");
+
+  display.clearBuffer();
+  display.setTextSize(1);
+  testdrawtext("Check for SD Fat format, not Fat32. If formatted correctly, you may need to reseat the SD Card\nand try again.\n\n\nRevealing XPUB in 5 seconds.", COLOR1);
+  display.display();
+
+  delay(6000);
+  }
+
+else {
+  SD.remove("XPUB.txt"); //This is the format for importing to Blue Wallet
+  myFile = SD.open("XPUB.txt", FILE_WRITE);
+  myFile.print(BWxpub);
+  myFile.close();
+  Serial.println("XPUB text written to SD");
+
+  SD.remove("COREWATCH.txt"); //This is the format for importing to Bitcoin Core
+  myFile = SD.open("COREWATCH.txt", FILE_WRITE);
+  myFile.println(desc);
+  myFile.println(desc2);
+  myFile.close();
+  Serial.println("COREWATCH text written to SD");
+}
+
+
+
+    
+   Serial.println("ButtonB");
+   delay(100);
+
+
+/////////////qrcode XPUB/////////////////
+  // Create the QR code
+  //QRCode qrcode;
+  // See table at https://github.com/ricmoo/QRCode
+  // or https://www.qrcode.com/en/about/version.html for
+  // calculation of data capacity of a QR code. Current
+  // settings will support a string of about 100 bytes:
+  qrVersion = 10;
+  // can be ECC_LOW, ECC_MEDIUM, ECC_QUARTILE and ECC_HIGH (0-3, respectively):
+  qrErrorLevel = ECC_MEDIUM;
+  // allocate QR code memory: 
+  qrcodeBytes[qrcode_getBufferSize(qrVersion)];
+  qrcode_initText(&qrcode, qrcodeBytes, qrVersion, qrErrorLevel, XXPUB);
+  // QR Code block characteristics will depend on the display:
+  // QR code needs a "quiet zone" of background color around it, hence the offset:
+  int offset = 10;
+  int blockSize = ((display.height() - (offset * 2)) / qrcode.size)*2;
+//////// fill with the background color:
+  display.clearBuffer();
+  display.fillScreen(COLOR2);
+  // read the bytes of the QR code and set the blocks light or dark, accordingly:
+  // vertical loop:
+  for (byte y = 0; y < qrcode.size; y++) {
+    // horizontal loop:
+    for (byte x = 0; x < qrcode.size; x++) {
+      // caculate the block's X and Y positions:
+      int blockX = (x * blockSize) + offset;
+      int blockY = (y * blockSize) + offset;
+      // read the block value from the QRcode:
+      int blockValue = qrcode_getModule(&qrcode, x, y);
+      // set the default block color:
+      int blockColor = COLOR2;
+      // if the block value is 1, set color to foreground color instead:
+      if (blockValue == 1) {
+        blockColor = COLOR1;
+      }
+      // display the block on the screen:
+      display.fillRect(blockX, blockY, blockSize, blockSize, blockColor);
+    }
+  }
+  // print the message and display it:
+  Serial.println(XXPUB);
+  display.display();
+  ///////////////////
+  countdown = 250;
+   while (countdown >= (0)) 
+   {delay(250);
+   //try to connect for a period of time
+   if (digitalRead(BUTTONB) != LOW) 
+    {
+    delay(250);
+    String countprint = String(countdown);
+//    Serial.println(countprint);
+    --countdown;}
+      else {Serial.println("ButtonB");Serial.println("Exit XPUB"); break;}
+   }
+
+
+   
+  display.clearBuffer();
+  display.setTextSize(2);
+  testdrawtext(XXPUB,COLOR1);
+  display.display();
+  ///////////////////
+  countdown = 250;
+   while (countdown >= (0)) 
+   {delay(250);
+   //try to connect for a period of time
+   if (digitalRead(BUTTONB) != LOW) 
+  {
+    delay(250);
+    String countprint = String(countdown);
+//    Serial.println(countprint);
+    --countdown;}
+      else {Serial.println("ButtonB");Serial.println("Exit XPUB"); break;}
+   }
+
+
+
+  
+  ///////////////////
+  display.clearBuffer();
+  display.setTextSize(1);
+  testdrawtext("IN CHRIST ALONE WE TRUST\n\nBITCOIN WALLET GENERATOR v4.0\n\n\nPress button near SD slot to reset.\n\n1) Press Top Left Button for Address 1 \n\n2) Press Top Middle Button for XPUB\n   & Optional SD Card Backup\n\n3) Press Top Right Button for Recovery Phrase \n   & Optional SD Card Backup", COLOR1);
+  display.display();
+   
+//   countdown = 250;
+//   while (countdown >= (0)) 
+//   {delay(250);
+//   //try to connect for a period of time
+//   if (digitalRead(BUTTONB) != LOW) 
+//  {
+//    delay(250);
+//    String countprint = String(countdown);
+////    Serial.println(countprint);
+//    --countdown;}
+//      else {Serial.println("ButtonB");Serial.println("Exit XPUB"); break;}
+//   }
+//  
+  countdown = 750;
+--countdown;
+  }
+
+
+
+if ( digitalRead(BUTTONC) == LOW ) ///////////// SD write and recovery phrase restate
+  {
+
+  countdown=250;
+  Serial.println("ButtonC");
+ /////////////////////////////////////////
+if(!SD.begin(SD_CS, SD_SCK_MHZ(16)))
+{Serial.println("SD did not initialize.");
+
+  display.clearBuffer();
+  display.setTextSize(1);
+  testdrawtext("Check for SD Fat format, not Fat32. If formatted correctly, you may need to reseat the SD Card\nand try again.\n\n\nRevealing Recovery Phrase in 5 seconds.", COLOR1);
+  display.display();
+
+  delay(6000);
+  }
+
+else {
+  SD.remove("PUBLIC.txt");
+  myFile = SD.open("PUBLIC.txt", FILE_WRITE);
+  myFile.print(PB4);
+  myFile.close();
+  Serial.println("PUBLIC text written to SD");
+
+  SD.remove("XPUB.txt");
+  myFile = SD.open("XPUB.txt", FILE_WRITE);
+  myFile.print(BWxpub);
+  myFile.close();
+  Serial.println("XPUB text written to SD");
+
+  SD.remove("PHRASE.txt");
+  myFile = SD.open("PHRASE.txt", FILE_WRITE);
+  myFile.print(phrase);
+  myFile.close();
+  Serial.println("PHRASE text written to SD");
+
+  SD.remove("COREWATCH.txt");
+  myFile = SD.open("COREWATCH.txt", FILE_WRITE);
+  myFile.println(desc);
+  myFile.println(desc2);
+  myFile.close();
+  Serial.println("COREWATCH text written to SD");
+}
+
+    
+
+
+
+/////////////qrcode XPUB/////////////////
+  // Create the QR code
+  //QRCode qrcode;
+  // See table at https://github.com/ricmoo/QRCode
+  // or https://www.qrcode.com/en/about/version.html for
+  // calculation of data capacity of a QR code. Current
+  // settings will support a string of about 100 bytes:
+  qrVersion = 10;
+  // can be ECC_LOW, ECC_MEDIUM, ECC_QUARTILE and ECC_HIGH (0-3, respectively):
+  qrErrorLevel = ECC_MEDIUM;
+  // allocate QR code memory: 
+  qrcodeBytes[qrcode_getBufferSize(qrVersion)];
+  qrcode_initText(&qrcode, qrcodeBytes, qrVersion, qrErrorLevel, PRIVATE);
+  // QR Code block characteristics will depend on the display:
+  // QR code needs a "quiet zone" of background color around it, hence the offset:
+  int offset = 10;
+  int blockSize = ((display.height() - (offset * 2)) / qrcode.size)*2;
+//////// fill with the background color:
+  display.clearBuffer();
+  display.fillScreen(COLOR2);
+  // read the bytes of the QR code and set the blocks light or dark, accordingly:
+  // vertical loop:
+  for (byte y = 0; y < qrcode.size; y++) {
+    // horizontal loop:
+    for (byte x = 0; x < qrcode.size; x++) {
+      // caculate the block's X and Y positions:
+      int blockX = (x * blockSize) + offset;
+      int blockY = (y * blockSize) + offset;
+      // read the block value from the QRcode:
+      int blockValue = qrcode_getModule(&qrcode, x, y);
+      // set the default block color:
+      int blockColor = COLOR2;
+      // if the block value is 1, set color to foreground color instead:
+      if (blockValue == 1) {
+        blockColor = COLOR1;
+      }
+      // display the block on the screen:
+      display.fillRect(blockX, blockY, blockSize, blockSize, blockColor);
+    }
+  }
+  // print the message and display it:
+  display.display();
+  ///////////////////
+  countdown = 250;
+   while (countdown >= (0)) 
+   {delay(250);
+   //try to connect for a period of time
+   if (digitalRead(BUTTONC) != LOW) 
+    {
+    delay(250);
+    String countprint = String(countdown);
+//    Serial.println(countprint);
+    --countdown;}
+      else {Serial.println("ButtonC");Serial.println("Exit PHRASE"); break;}
+   }  
+
+
+
+
+
+
+
+  display.clearBuffer();
+  display.setTextSize(2);
+  testdrawtext(PHR, COLOR1);
+  display.display();
+  ///////////////////
+  countdown = 250;
+   while (countdown >= (0)) 
+   {delay(250);
+   //try to connect for a period of time
+   if (digitalRead(BUTTONC) != LOW) 
+  {
+    delay(250);
+    String countprint = String(countdown);
+//    Serial.println(countprint);
+    --countdown;}
+      else {Serial.println("ButtonC"); break;}
+   }
+    Serial.println("Exit Phrase");
+  
+  countdown = 750;
+  ///////////////////
+  display.clearBuffer();
+  display.setTextSize(1);
+  testdrawtext("IN CHRIST ALONE WE TRUST\n\nBITCOIN WALLET GENERATOR v4.0\n\n\nPress button near SD slot to reset.\n\n1) Press Top Left Button for Address 1 \n\n2) Press Top Middle Button for XPUB\n   & Optional SD Card Backup\n\n3) Press Top Right Button for Recovery Phrase \n   & Optional SD Card Backup", COLOR1);
+  display.display();}
+
+  --countdown;
+  //Serial.println(countdown);
+ }
+
+
+  
+ --countdown;
+ //Serial.println(countdown);
+ loop();
+}
+//////////////////////////////////////////////////////////////////////////////////////////////
+
+void generate_wallet_print()
+{
+
+  const uint8_t pklen = 32;
+    uint8_t pkbytes[pklen];
+
+    bootloader_random_enable(); /*key to true random number generation, uses analog noise and other sources for entropy*/
+    for (uint8_t i = 0; i < pklen; i++)
+    {
+        pkbytes[i] = generate_random_8bit();
+    }
+    bootloader_random_disable(); /*protects from wireless attack*/
+    
+    pkstr = "";
+    for (uint8_t i = 0; i < pklen; i++)
+    {
+        if (pkbytes[i] <= 0x0f)
+        {
+            pkstr += "0";
+        }
+        pkstr += String(pkbytes[i], HEX);
+    }
+  
+  
+  String entropy = pkstr;
+  phrase = generateMnemonic(12, entropy);
+//  Serial.println(phrase);
+
+phra = String("Private Recovery Phrase:\n\n")+phrase;
+PRIVATE = phrase.c_str();
+PHR = phra.c_str();
 
 HDPrivateKey root(phrase, ""); // using default empty password, fill quotes if you want a password added
+
 ROOOT = root;
 finger = root.fingerprint();
 fing = finger.c_str();
@@ -435,63 +931,19 @@ PB4 = pub4.address();
 PBL4 = PB4.c_str();
 
 
-
-//////////////////////////////////////////
-if(!SD.begin(SD_CS, SD_SCK_MHZ(16)))
-{Serial.println("SD did not initialize.");
-
   display.clearBuffer();
   display.setTextSize(1);
-  testdrawtext("\n\n\nSD CARD WRITE FAILED\n\n\nCheck for SD Fat format, not Fat32. If formatted correctly, you may need to reseat the SD Card.\n\nWill continue to write wallet. Please wait.", COLOR1);
-  display.display();
-  }
-
-else{
-
-  SD.remove("PUBLIC.txt");
-  myFile = SD.open("PUBLIC.txt", FILE_WRITE);
-  myFile.print(PB4);
-  myFile.close();
-  Serial.println("PUBLIC text written to SD");
-
-  SD.remove("XPUB.txt");
-  myFile = SD.open("XPUB.txt", FILE_WRITE);
-  myFile.print(BWxpub);
-  myFile.close();
-  Serial.println("XPUB text written to SD");
-
-  SD.remove("PHRASE.txt");
-  myFile = SD.open("PHRASE.txt", FILE_WRITE);
-  myFile.print(phrase);
-  myFile.close();
-  Serial.println("PHRASE text written to SD");
-
-  SD.remove("COREWATCH.txt");
-  myFile = SD.open("COREWATCH.txt", FILE_WRITE);
-  myFile.println(desc);
-  myFile.println(desc2);
-  myFile.close();
-  Serial.println("COREWATCH text written to SD");
-
-  Serial.println("Setup complete. Keys written to SD if FAT formatted card is present and SD initializes correctly.");
-}
-
-
-////////////eInk text print//////////////////
-
-
-  display.clearBuffer();
-  display.setTextSize(1);
-  testdrawtext("IN CHRIST ALONE WE TRUST\n\nBITCOIN WALLET GENERATOR v4.0\n\n\n\n\nPlease wait 1 minute for options to recall \naddresses & recovery phrase as generator \nattempts to print\n\n\nWill also attempt to write wallet info to SD card", COLOR1);
+  testdrawtext("IN CHRIST ALONE WE TRUST\n\nBITCOIN WALLET GENERATOR v4.0\n\n\n\n\nPlease wait 1 minute for options to recall \naddresses & recovery phrase as generator \nattempts to print", COLOR1);
   display.display();
 
 printer.justify('L');
-printer.printf(PHR);
+printer.feed();
+printer.println(F(PHR));
 
 //print QR Code for Phrase
 printer.feed(1);
 QRCode qrcode;
-uint8_t qrVersion = 10;
+uint8_t qrVersion = 10; 
 uint8_t qrErrorLevel = ECC_MEDIUM;
 byte qrcodeBytes[qrcode_getBufferSize(qrVersion)];
 qrcode_initText(&qrcode, qrcodeBytes, qrVersion, qrErrorLevel, PRIVATE);
@@ -505,36 +957,36 @@ printer.printBitmap(width, width, pixels);
   
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////BLUE WALLET FOOTER
 printer.justify('L');
-printer.printf("---------------------------");
+printer.feed(1);printer.println(F("---------------------------"));
 printer.feed(1);
-printer.printf("Import Recovery Phrase to");
+printer.println(F("Import Recovery Phrase to"));
 printer.feed(1);
-printer.printf("BlueWallet for ease of use:");
+printer.println(F("BlueWallet for ease of use:"));
 printer.feed(1);
-printer.printf("https://bluewallet.io");
+printer.println(F("https://bluewallet.io"));
 printer.feed(1);
 //qrcode_initText(&qrcode, qrcodeBytes, qrVersion, qrErrorLevel, "https://bluewallet.io/");
 printer.feed(1);
-printer.printf("Step 1) Go to create new wallet; click but don't create yet");
+printer.println(F("Step 1) Go to create new wallet; click but don't create yet"));
 printer.feed(1);
-printer.printf("Step 2) Scroll down & click");
+printer.println(F("Step 2) Scroll down & click"));
 printer.feed(1);
-printer.printf("      IMPORT");
+printer.println(F("      IMPORT"));
 printer.feed(1);
-printer.printf("Step 3) Enter recovery phrase & continue. Enjoy!");
+printer.println(F("Step 3) Enter recovery phrase & continue. Enjoy!"));
 printer.feed(1);
 //////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////BLUE WALLET FOOTER
 printer.justify('L');
-printer.printf("---------------------------");
+printer.feed(1);printer.println(F("---------------------------"));
 printer.feed(1);
-printer.printf("Spend Using :");
+printer.println(F("Spend Using :"));
 printer.feed(1);
-printer.printf("thebitcoincompany.com");
+printer.println(F("thebitcoincompany.com"));
 printer.feed(1);
-printer.printf("Buy More Using :");
+printer.println(F("Buy More Using :"));
 printer.feed(1);
-printer.printf("https://strike.me/");
+printer.println(F("https://strike.me/"));
 //////////////////////////////////////////////////////////////////
   
 ////////////////////////////////////////
@@ -547,7 +999,7 @@ width = ((qrcode.version * 5 + 7) * scale);
 pixels[buffer_size];
 printer.justify('L');
 printer.feed(1);
-printer.println("---------------------------");
+printer.feed(1);printer.println(F("---------------------------"));
 printer.println(F("ADVANCED FEATURES..."));
 printer.feed(1);
 printer.print(F("FINGERPRINT: "));
@@ -560,7 +1012,7 @@ printer.printBitmap(width, width, pixels);
 
 //printer.printf(XXPUB);
 printer.feed(1);
-printer.printf("---------------------------");
+printer.feed(1);printer.println(F("---------------------------"));
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   
 ////////////////////////////////////////
@@ -573,7 +1025,7 @@ printer.feed(1);
 printer.justify('L');
 printer.println(F("Public Address 1: "));
 printer.feed(1);
-printer.printf(PBL4);
+printer.print(F(PBL1));
 
 ////////////////////////////////////////////////////////////////////
 // try scale=7, try lower values if you run out of memory
@@ -621,8 +1073,8 @@ printer.printBitmap(width, width, pixels);
 //printer.printBitmap(width, width, pixels);
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 printer.feed(1);
-printer.println("---------------------------");
-printer.printf("Learn More At:");
+printer.feed(1);printer.println(F("---------------------------"));
+printer.println(F("Learn More At:"));
 printer.feed(1);
 qrcode_initText(&qrcode, qrcodeBytes, qrVersion, qrErrorLevel, "https://10hoursofbitcoin.com/");
 scale=3;
@@ -631,7 +1083,13 @@ width = ((qrcode.version * 5 + 7) * scale);
 pixels[buffer_size];
 buffer_qr(&qrcode, pixels, scale);
 printer.printBitmap(width, width, pixels);
-printer.feed(3);
+
+printer.feed();
+printer.feed();
+printer.feed();
+printer.feed();
+printer.feed();
+
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////print phrase again
@@ -1008,10 +1466,15 @@ void signthis()
             delay(100);
             Serial.println(finalfinal);
             PHRS = finalfinal.c_str();
-            finalString="";
+            
             strlength=0;
 
-            root = HDPrivateKey(PHRS,"");
+            //determine if using an xprv or a bip39 phrase
+            if(finalfinal.indexOf(" ")>-1)
+            {root = HDPrivateKey(PHRS,"");}
+            else{HDPrivateKey root(PHRS);}
+            
+            finalString="";
             HDPrivateKey account = root.derive("m/84'/0'/0'");
 //            Serial.println(root);
 //            Serial.println(root.fingerprint());
@@ -1285,10 +1748,6 @@ void signer()
 
 
 
-
-
-
-
 void generate()
 {
   countdown = 60000;
@@ -1296,11 +1755,16 @@ void generate()
   Serial.println("Generate");
   display.clearBuffer();
   display.setTextSize(1);
-  testdrawtext("\n\nCAUTION:\n\nIf SD inserted, will overwrite with new wallet.\n\n\n-Top Middle Button to Continue\n\n\n-Press Reset to Exit.",COLOR1);
+  testdrawtext("\n\n\n-Top Left Button for Multisig Options\n\n\n-Top Middle Button to Continue SingleSig\n\n\n-Top Right Button to Continue AND Print\n\n\n-Press Reset to Exit.",COLOR1);
   display.display();
   delay(500);
   while (countdown >= (0))
-  {delay(100); if ( digitalRead(BUTTONB) == LOW){generate_wallet();}--countdown;}
+  {delay(100); 
+  --countdown;
+//  if ( digitalRead(BUTTONA) == LOW){generate_multisig();};
+  if ( digitalRead(BUTTONB) == LOW){generate_wallet();};
+  if ( digitalRead(BUTTONC) == LOW){generate_wallet_print();};
+  }
 }
 
 
@@ -1417,6 +1881,8 @@ void setup() {
 //Serial.begin(115200);
   delay(100);
 Serial1.begin(9600);  // Initialize HardwareSerial for Printer
+
+
   delay(100);
   printer.begin();        // Init printer (same regardless of serial type)
   delay(100);
