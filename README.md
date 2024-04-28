@@ -19,7 +19,7 @@ Create and print temporary Bitcoin wallets using a ESP32 microcontroller and The
 
 <br><br><br>
 **1st installation option : Flashing Binary to the ESP32**
-1) Download the TippingWallet.bin file from this github repository.<br>
+1) Download the "Tipping Wallet v1_2 Grayscale.bin" or "Tipping Wallet v1_2 Tricolor.bin" file from this github repository, depending on which Featherwing you have.<br>
 2) You will need to install Python on your computer if it isn't already installed.<br>
 3) Then you will need to install esptool (see here https://docs.espressif.com/projects/esptool/en/latest/esp32/installation.html)<br>
 5) Plug in your USB data cable to your esp32 device and connect to your computer's USB.<br>
@@ -33,7 +33,7 @@ Example of an esp32 device connected via COM port 9: python esptool.py -p COM9 -
 
 <br><br><br>
 **2nd installation option : The way of pain in the Arduino IDE**
-Read the .ino file in the repository, especially the comments in the header. I do not have the time to support other boards or setups, unfortunately, other than the Adafruit ESP32 v2 Feather and eInk FeatherWing 2.9". If you are new to Arduino IDE, checkout https://randomnerdtutorials.com/ for ESP32 programming tutorials. You will need to know how to install new libraries and program an ESP32 for this project. Why am I not making this easier? You should have to read code in order to trust what you are doing when it comes to Hardware Wallets.
+Read the .ino file appropriate for your Featherwing in the repository, especially the comments in the header. I do not have the time to support other boards or setups, unfortunately, other than the Adafruit ESP32 v2 Feather and eInk FeatherWing 2.9". If you are new to Arduino IDE, checkout https://randomnerdtutorials.com/ for ESP32 programming tutorials. You will need to know how to install new libraries and program an ESP32 for this project. Why am I not making this easier? You should have to read code in order to trust what you are doing when it comes to Hardware Wallets.
 
 Make sure you also view Adafruit for basic instructions on installing libraries for the ThinkInk feather and/or Nano Thermal Printer. I do not follow Adafruit's power instructions on the thermal printer though, preferring a 1amp DC power source instead of a 2amp that would require a logic stepdown chip to prevent burning out the 3.3v ESP32 board. Instead you can use the 1amp power source but adjust certain settings in the libraries as noted in the .ino file and also plug the thermal printer in for 15 minutes or so to let it heat up before printing.
 
