@@ -13,7 +13,7 @@ Create and print temporary Bitcoin wallets using a ESP32 microcontroller and The
 * E. 1 Amp or 2 Amp 9V Power Supply (Either one works)
 * F. Terminal Block that fits Power Supply Jack (Female)
 * G. Small breadboard
-* H. Jumper wires for microcontrollers/small electronics
+* H. Jumper wires for microcontrollers/small electronics (Male endings on both ends)
 * *Optional: 2 SD Cards (smallest size in MB possible) and Adafruit Feather Lipo Battery
 * You also need a computer with a USB port and with Arduino IDE installed
 
