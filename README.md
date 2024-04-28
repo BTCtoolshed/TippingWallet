@@ -10,7 +10,7 @@ Create and print temporary Bitcoin wallets using a ESP32 microcontroller and The
 * B. Adafruit Feather ESP32 v2 (choose assembled headers option if you dont want to solder pins on) Product ID 5900 or 5400
 * C. USB-C Data Cable for flashing (Not a regular charging cable! This is specifically a data cable.)
 * D. Adafruit Nano Thermal Printer (If unavailable, the newest version of my software also supports QR 204 Thermal Printers over serial, scroll to bottom of this page for instructions for QR204)
-* E. 1 Amp 9V Power Supply
+* E. 1 Amp or 2 Amp 9V Power Supply (Either one works)
 * F. Terminal Block that fits Power Supply Jack (Female)
 * G. Small breadboard
 * H. Jumper wires for microcontrollers/small electronics
