@@ -159,3 +159,15 @@ Since Adafruit no longer sells thermal printers, I added support for the QR204 t
 The setup is very similar, but the QR204 uses two separate jumper connections. One is for power and the other for serial connection. The connector with a 2-wire female jack is for power: red is for vin (positive/power) and black is for ground. The other connector is a 5-wire jack. You will need to connect the ground to the same ground as the 2-wire connector and also the ESP32's ground connection. The RX and TX on the 5-wire jack connect to the RX and TX of the ESP32. In the photo example of the thermal printer connection in the sections above, you would just need to add an extra jumper wire for the ground in the same row as the yellow jumper wire and connect that to the "extra" ground connection for the QR204. The Adafruit printer only has 1 ground connection; the QR204 has 2 ground connections.
 
 If the printer does not print from the ESP32 on its first test, you may have the TX and RX reversed. It won't harm the controller if you have them switched, it just won't work until you switch them to the correct slots.
+
+<br><br><br><br>
+# BETA version 1.3 Hidden One Time Pad printer
+If you jump to the screen where the xpub QR code is displayed in the SingleSig non-print wallet generation option, hold the upper LEFT button for 2 seconds and it will print two One Time Pads. They are alphabetical only. You can use the OTP encryption and decryption method by assigning positive numbers 0 through +25 to A-Z (A = 1, B = 2, so on and so forth. Don't change that. They are A=1, B=2, so on and so forth). a-z lowercase can be assigned to negative numbers 0 through -25.
+
+Example : Let's encrypt and decrypt "HELLO"
+1) "HELLO" when translated to numbers is always going to be 7 4 11 11 14
+2) Let's say the first five letter on the OTP are "JTNDI", which is 9 19 13 3 8
+3) Subtract "JTNDI" from "HELLO" = 7-9, 4-19, 11-13, 11-3, 14-8
+4) This gives us -2, -15, -2, 8, 6 or "cpcIG". Send this to your recipient. This is the encoded message.
+5) Decode = Add "JTNDI" to "cpcIG" = -2+9, -15+19, -2+13, 8+3, 6+8
+6) This gives us 7 4 11 11 14, which is "HELLO"
