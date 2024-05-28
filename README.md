@@ -138,7 +138,7 @@ A submenu sits behind a random quote generator.
 To access the submenu, click all 3 top buttons on the eInk Feather Wing at the same time to enter the submenu.
 Pick the Left button to begin signing a transaction. You will need an SD card with the Private Key Phrase to start the process. 
 
-You will also need another SD card on which you have saved a Partially Signed Bitcoin Transaction. You can do this with Bitcoin Core or with BlueWallet or other wallets. Save the PSBT as this name: "This.psbt" to the SD card. 
+You will also need another SD card on which you have saved a Partially Signed Bitcoin Transaction. You can do this with BlueWallet or other wallets. Save the PSBT as this name: "This.psbt" to the SD card. 
 
 Follow the instructions on the eInk display for signing a transaction. After the transaction is signed, the full transaction will be listed in the file "THAT.psbt" . You can broadcast the transaction in Bitcoin Core or BlueWallet or any other wallet that can accept Bitcoin raw transactions.
 
@@ -164,7 +164,7 @@ If the printer does not print from the ESP32 on its first test, you may have the
 # BETA version 1.3 Hidden One Time Pad printer
 Only found in the BETA folder...
 
-If you jump to the screen where the xpub QR code is displayed in the SingleSig non-print wallet generation option, hold the upper LEFT button for 2 seconds and it will print two One Time Pads. They are alphabetical only. You can use the OTP encryption and decryption method by assigning positive numbers 0 through +25 to A-Z (A = 1, B = 2, so on and so forth. Don't change that. They are A=1, B=2, so on and so forth). a-z lowercase can be assigned to negative numbers 0 through -25.
+If you jump to the screen where the xpub QR code is displayed in the SingleSig non-print wallet generation option, hold the upper LEFT button for 2 seconds and it will print two One Time Pads. They are alphabetical only. You can use the OTP encryption and decryption method by assigning positive numbers 0 through +25 to A-Z (A = 0, B = 1, so on and so forth. Don't change that. They are A=0, B=1, so on and so forth). a-z lowercase can be assigned to negative numbers 0 through -25.
 
 Example : Let's encrypt and decrypt "HELLO"
 1) "HELLO" when translated to numbers is always going to be 7 4 11 11 14
