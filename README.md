@@ -162,6 +162,8 @@ If the printer does not print from the ESP32 on its first test, you may have the
 
 <br><br><br><br>
 # BETA version 1.3 Hidden One Time Pad printer
+Only found in the BETA folder...
+
 If you jump to the screen where the xpub QR code is displayed in the SingleSig non-print wallet generation option, hold the upper LEFT button for 2 seconds and it will print two One Time Pads. They are alphabetical only. You can use the OTP encryption and decryption method by assigning positive numbers 0 through +25 to A-Z (A = 1, B = 2, so on and so forth. Don't change that. They are A=1, B=2, so on and so forth). a-z lowercase can be assigned to negative numbers 0 through -25.
 
 Example : Let's encrypt and decrypt "HELLO"
