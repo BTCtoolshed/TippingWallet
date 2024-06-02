@@ -18,7 +18,8 @@ Create and print temporary Bitcoin wallets using a ESP32 microcontroller and The
 * You also need a computer with a USB port and with Arduino IDE installed
 
 <br><br><br>
-**1st installation option : Flashing Binary to the ESP32**
+**1st installation option : Flashing Binary to the ESP32**<br>
+*Warning : By using this option you are trusting I am not a malicious actor and that the software I used to compile this bin was not compromised!!!*
 1) Download the "Tipping Wallet v1_2 Grayscale.bin" or "Tipping Wallet v1_2 Tricolor.bin" file from this github repository, depending on which Featherwing you have.<br>
 2) You will need to install Python on your computer if it isn't already installed.<br>
 3) Then you will need to install esptool (see here https://docs.espressif.com/projects/esptool/en/latest/esp32/installation.html)<br>
